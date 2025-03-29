@@ -35,11 +35,31 @@ namespace ConsoleApp2
             }
         }
 
-        public void SetSpeed(float speed)
+        public void SetSpeed()
         {
-            this.speed = speed;
-            NotifyObservers();
+            this.speed = 10;
+            
         }
-    
-}
+        public void UpdateSpeed()
+        {
+            while (this.speed < 200)
+            {
+                this.speed += 10;
+
+                if (this.speed <=110)
+                {
+                    NotifyObservers();
+                }
+                
+                Console.WriteLine($"Текущая скорость{this.speed}");
+                Thread.Sleep(300);
+                if (this.speed == 150)
+                {
+                    Console.WriteLine("Скорость достигла 150");
+                }
+
+
+            }
+        }
+    }
 }
