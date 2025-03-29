@@ -9,9 +9,24 @@
 
             car.RegisterObserver(officer);
 
-            car.SetSpeed(90);
-            car.SetSpeed(110);
-            car.SetSpeed(70);
+
+            // увеличение скорости от 10 до 200 
+            for (int i = 10; i <= 200; i += 10)
+            {
+                car.SetSpeed(i);
+            }
+
+            // доп итерации чтоб накопить 10 превышений
+            for (int i = 0; i < 5; i++)
+            {
+                car.SetSpeed(200);
+            }
+
+            car.RemoveObserver(officer); 
+
+
         }
+
     }
 }
+
