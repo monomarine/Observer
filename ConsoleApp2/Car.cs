@@ -40,6 +40,22 @@ namespace ConsoleApp2
             this.speed = speed;
             NotifyObservers();
         }
-    
-}
+        //постепенное увеличение скорости до 200 за 12 итераций
+        public void IncreaseSpeed()
+        {
+            if (speed >= 10 && speed < 200)
+            {
+                float increase = (200 - speed) / 12;
+
+                while (speed < 200)
+                {
+                    if (speed + increase <= 200)
+                    {
+                        SetSpeed(speed + increase);
+                        Thread.Sleep(1000);
+                    }
+                }
+            }
+        }
+    }
 }
