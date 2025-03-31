@@ -9,6 +9,10 @@
 
             car.RegisterObserver(officer);
 
+
+            car.GraduallyIncreaseSpeed();
+
+
             car.SetSpeed(90);
             car.SetSpeed(110);
             car.SetSpeed(70);
