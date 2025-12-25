@@ -9,9 +9,8 @@
 
             car.RegisterObserver(officer);
 
-            car.SetSpeed(90);
-            car.SetSpeed(110);
-            car.SetSpeed(70);
+            car.Boost();
+
         }
     }
 }

@@ -12,11 +12,11 @@ namespace ConsoleApp2
         {
             if (speed > 100)
             {
-                Console.WriteLine("Скорость превышена! Патрульный выезжает на нарушение.");
+                Console.WriteLine("Скорость превышена! Патрульный выезжает на нарушение." + speed + "км/ч");
             }
             else
             {
-                Console.WriteLine("Скорость в пределах нормы.");
+                Console.WriteLine("Скорость в пределах нормы." + speed +"км/ч");
             }
         }
     }
