@@ -11,7 +11,7 @@
 
             for (int i = 0; i < 12; i++)
             {
-                car.SetSpeed(160); \
+                car.SetSpeed(160); 
             }
         }
     }
