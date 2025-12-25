@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
@@ -10,14 +6,12 @@ namespace ConsoleApp2
     {
         public void Update(float speed)
         {
-            if (speed > 100)
-            {
-                Console.WriteLine("Скорость превышена! Патрульный выезжает на нарушение.");
-            }
+            if (speed > 100 && speed <= 150)
+                Console.WriteLine($"Скорость {speed} км/ч - превышение! Патрульный выезжает.");
+            else if (speed > 150)
+                Console.WriteLine($"Скорость {speed} км/ч - ОПАСНОЕ превышение!");
             else
-            {
-                Console.WriteLine("Скорость в пределах нормы.");
-            }
+                Console.WriteLine($"Скорость {speed} км/ч - норма.");
         }
     }
 }

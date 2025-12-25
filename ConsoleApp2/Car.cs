@@ -1,45 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-
     public class Car : ISubject
     {
-        private List<IObserver> observers;
+        private List<IObserver> observers = new List<IObserver>();
         private float speed;
+        private int over150Counter = 0;
 
-        public Car()
-        {
-            observers = new List<IObserver>();
-        }
-
-        public void RegisterObserver(IObserver observer)
-        {
-            observers.Add(observer);
-        }
-
-        public void RemoveObserver(IObserver observer)
-        {
-            observers.Remove(observer);
-        }
+        public void RegisterObserver(IObserver observer) => observers.Add(observer);
+        public void RemoveObserver(IObserver observer) => observers.Remove(observer);
 
         public void NotifyObservers()
         {
-            foreach (var observer in observers)
+            // Проверяем длительное превышение
+            if (speed > 150)
             {
-                observer.Update(speed);
+                over150Counter++;
+                if (over150Counter >= 10)
+                {
+                    Console.WriteLine($"ВНИМАНИЕ: Скорость {speed} км/ч держится уже {over150Counter} раз!");
+                }
             }
+            else
+            {
+                over150Counter = 0;
+            }
+
+            foreach (var observer in observers)
+                observer.Update(speed);
         }
 
-        public void SetSpeed(float speed)
+        public void SetSpeed(float newSpeed)
         {
-            this.speed = speed;
+            speed = newSpeed;
             NotifyObservers();
         }
-    
-}
+
+        // Новый метод: плавное увеличение скорости
+        public void GraduallyIncreaseSpeed()
+        {
+            for (float s = 10; s <= 200; s += 10)
+            {
+                SetSpeed(s);
+                System.Threading.Thread.Sleep(300);
+            }
+        }
+    }
 }
