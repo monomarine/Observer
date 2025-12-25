@@ -11,10 +11,12 @@ namespace ConsoleApp2
     {
         private List<IObserver> observers;
         private float speed;
+        private int overspeedCounter; 
 
         public Car()
         {
             observers = new List<IObserver>();
+            overspeedCounter = 0;
         }
 
         public void RegisterObserver(IObserver observer)
@@ -39,7 +41,37 @@ namespace ConsoleApp2
         {
             this.speed = speed;
             NotifyObservers();
-        }
+
     
+            if (speed > 150)
+            {
+                overspeedCounter++;
+                if (overspeedCounter >= 10)
+                {
+                    Console.WriteLine("ВНИМАНИЕ! Превышение скорости более 150 км/ч продолжается 10 итераций!");
+                    overspeedCounter = 0; 
+                }
+            }
+            else
+            {
+                overspeedCounter = 0; 
+            }
+        }
+
+   
+        public void GradualSpeedIncrease()
+        {
+            for (float s = 10; s <= 200; s += 10)
+            {
+                SetSpeed(s);
+                Console.WriteLine($"Текущая скорость: {s} км/ч");
+
+             
+                System.Threading.Thread.Sleep(100);
+            }
+            Console.WriteLine("Достигнута максимальная скорость 200 км/ч\n");
+        }
+    }
+
 }
-}
+
