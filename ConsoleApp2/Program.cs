@@ -9,9 +9,10 @@
 
             car.RegisterObserver(officer);
 
-            car.SetSpeed(90);
-            car.SetSpeed(110);
-            car.SetSpeed(70);
+            for (int i = 0; i < 12; i++)
+            {
+                car.SetSpeed(160); \
+            }
         }
     }
 }
