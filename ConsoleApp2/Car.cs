@@ -11,10 +11,10 @@ namespace ConsoleApp2
     {
         private List<IObserver> observers;
         private float speed;
-
         public Car()
         {
             observers = new List<IObserver>();
+            speed = 0;
         }
 
         public void RegisterObserver(IObserver observer)
@@ -38,8 +38,26 @@ namespace ConsoleApp2
         public void SetSpeed(float speed)
         {
             this.speed = speed;
+            
             NotifyObservers();
         }
-    
+
+        public void UvelichenieSpeed()
+        {
+            Random random = new Random();
+            float current = 10;
+
+            for(int i = 0; i < 10; i++)
+            {
+                current += random.Next(5, 50);
+
+                if (current >200) current = 200;
+                if (current <10) current = 10;
+
+                Console.WriteLine($" скорость {current}");
+                SetSpeed(current);
+            }
+        }
+    }
 }
-}
+
