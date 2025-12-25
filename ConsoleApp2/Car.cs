@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace ConsoleApp2
 {
-
     public class Car : ISubject
     {
         private List<IObserver> observers;
@@ -40,6 +37,15 @@ namespace ConsoleApp2
             this.speed = speed;
             NotifyObservers();
         }
-    
-}
+
+        public void IncreaseSpeedGradually()
+        {
+            for (float s = 10; s <= 200; s += 10)
+            {
+                SetSpeed(s);
+                Thread.Sleep(300);
+                Console.WriteLine($"Текущая скорость: {s} км/ч");
+            }
+        }
+    }
 }
