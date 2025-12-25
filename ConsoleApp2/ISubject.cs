@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
+
     public interface ISubject
     {
         void RegisterObserver(IObserver observer);
