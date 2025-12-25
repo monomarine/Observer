@@ -9,9 +9,10 @@
 
             car.RegisterObserver(officer);
 
-            car.SetSpeed(90);
-            car.SetSpeed(110);
-            car.SetSpeed(70);
+            Console.WriteLine("=== Тестирование системы отслеживания скорости ===\n");
+            car.GraduallyIncreaseSpeed();
+            Console.WriteLine("\n=== Тест завершён ===");
+            Console.ReadKey();
         }
     }
 }
