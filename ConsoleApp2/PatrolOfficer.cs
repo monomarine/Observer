@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,8 @@ namespace ConsoleApp2
     {
         public void Update(float speed)
         {
-            if (speed > 100)
+            
+            if (speed > 150)
             {
                 Console.WriteLine("Скорость превышена! Патрульный выезжает на нарушение.");
             }
