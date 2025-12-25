@@ -40,6 +40,16 @@ namespace ConsoleApp2
             this.speed = speed;
             NotifyObservers();
         }
-    
-}
+
+        public void SpeedIncrease(float speed)
+        {
+            while(speed<200)
+            {
+                speed = speed + 10;
+                SetSpeed(speed);
+        
+            }
+        }
+
+    }
 }
