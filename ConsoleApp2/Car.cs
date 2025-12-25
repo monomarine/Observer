@@ -40,6 +40,13 @@ namespace ConsoleApp2
             this.speed = speed;
             NotifyObservers();
         }
-    
-}
+        public void GradualSpeedIncrease()
+        {
+            for (int i = 10; i <= 200; i += 10)
+            {
+                SetSpeed(i);
+                Thread.Sleep(300); 
+            }
+        }
+    }
 }
