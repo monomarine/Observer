@@ -10,7 +10,11 @@ namespace ConsoleApp2
     {
         public void Update(float speed)
         {
-            if (speed > 100)
+            if (speed >= 150)
+            {
+                Console.WriteLine("Cкрость превышает 150");
+            }
+            else if(speed > 100)
             {
                 Console.WriteLine("Скорость превышена! Патрульный выезжает на нарушение.");
             }
