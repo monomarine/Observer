@@ -10,8 +10,19 @@
             car.RegisterObserver(officer);
 
             car.SetSpeed(90);
-            car.SetSpeed(110);
-            car.SetSpeed(70);
+            car.SetSpeed(200);
+
+            car.RegisterObserver(officer);
+
+            Console.WriteLine("\nПостепенного увеличение скорости\n");
+            car.GraduallyIncreaseSpeed();
+
+            Console.WriteLine("\nПовторное нарушение!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+
+            for (int i = 0; i < 12; i++)
+            {
+                car.SetSpeed(160);
+            }
         }
     }
 }

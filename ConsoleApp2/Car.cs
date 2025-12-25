@@ -11,6 +11,7 @@ namespace ConsoleApp2
     {
         private List<IObserver> observers;
         private float speed;
+        private int overspeedCounter;
 
         public Car()
         {
@@ -38,8 +39,32 @@ namespace ConsoleApp2
         public void SetSpeed(float speed)
         {
             this.speed = speed;
+            if (speed > 150)
+            {
+                overspeedCounter++;
+                if (overspeedCounter >= 10)
+                {
+                    Console.WriteLine("\nПревышение скорости более 150 км/ч продолжается 10 раз подряд!\n");
+                    overspeedCounter = 0;
+                }
+            }
+            else
+            {
+                overspeedCounter = 0;
+            }
+
             NotifyObservers();
         }
-    
+
+        public void GraduallyIncreaseSpeed()
+        {
+
+            for (int i = 10; i <= 200; i += 10)
+            {
+                SetSpeed(i);
+            }
+        }
+    }
+
 }
-}
+
