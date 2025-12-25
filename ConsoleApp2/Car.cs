@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-
     public class Car : ISubject
     {
         private List<IObserver> observers;
         private float speed;
+        private int speedOver150Counter; 
 
         public Car()
         {
             observers = new List<IObserver>();
+            speedOver150Counter = 0;
         }
 
         public void RegisterObserver(IObserver observer)
@@ -39,7 +40,32 @@ namespace ConsoleApp2
         {
             this.speed = speed;
             NotifyObservers();
+
+            if (speed > 150)
+            {
+                speedOver150Counter++;
+                if (speedOver150Counter >= 10)
+                {
+                    Console.WriteLine($"ВНИМАНИЕ: Превышение скорости более 150 км/ч продолжается уже {speedOver150Counter} раз подряд!");
+                }
+            }
+            else
+            {
+                speedOver150Counter = 0; 
+            }
         }
-    
-}
+
+        public void GraduallyIncreaseSpeed()
+        {
+            Console.WriteLine("\n Постепенное увеличение скорости");
+
+            for (int currentSpeed = 10; currentSpeed <= 200; currentSpeed += 10)
+            {
+                SetSpeed(currentSpeed); 
+                System.Threading.Thread.Sleep(200); 
+            }
+
+            Console.WriteLine(" Разгон завершен \n");
+        }
+    }
 }
