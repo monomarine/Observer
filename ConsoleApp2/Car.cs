@@ -11,10 +11,12 @@ namespace ConsoleApp2
     {
         private List<IObserver> observers;
         private float speed;
+        private int overspeedCounter;
 
         public Car()
         {
             observers = new List<IObserver>();
+            overspeedCounter = 0;
         }
 
         public void RegisterObserver(IObserver observer)
@@ -40,6 +42,17 @@ namespace ConsoleApp2
             this.speed = speed;
             NotifyObservers();
         }
+        
+        public void IncreaseSpeed()
+        {
+            for (int i = 10; i <= 200; i += 10)
+            {
+                SetSpeed(i);
+                Thread.Sleep(200);
+            }
+        }
+    }
+
     
 }
-}
+

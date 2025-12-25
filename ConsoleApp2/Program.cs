@@ -11,6 +11,7 @@
 
             car.SetSpeed(90);
             car.SetSpeed(110);
+            car.IncreaseSpeed();
             car.SetSpeed(70);
         }
     }
